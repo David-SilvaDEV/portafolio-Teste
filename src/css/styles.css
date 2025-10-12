@@ -1,0 +1,423 @@
+/* 🔹 Reinicio general: elimina los márgenes y rellenos por defecto de todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Incluye padding y borde dentro del ancho total */
+}
+
+
+/* 🔹 Aplica un borde al header solo para visualizar sus límites */
+header {
+
+
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height: 100px;
+
+
+}
+
+.section-header {
+
+    border: 1px solid #738A9A;
+    height: 100;
+    width: 80%;
+    border-radius: 20px;
+    background-color: #738A9A;
+    display: flex;
+    box-shadow: black;
+    animation: fadeInDown 2s ease; 
+
+}
+
+
+
+
+/* 🔹 Define el tamaño base de toda la página */
+
+
+/* 🔹 Estilo general del cuerpo de la página */
+body {
+    background: #CCDBE2;
+    /* Fondo azul */
+    font-family: 'Roboto', sans-serif;
+    /* Fuente Roboto */
+    font-weight: 400;
+    /* Peso de fuente regular */
+}
+
+.logo {
+
+    width: 55%;
+
+}
+
+/* 🔹 Contenedor de los botones: usa flexbox para alinearlos */
+.buttons {
+    display: flex;
+    /* Coloca los botones en línea horizontal */
+    text-align: center;
+    height: 100%;
+
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 10px;
+    
+    
+
+
+}
+
+/* gap: 30px; */
+.div-btn {}
+
+
+
+/* 🔹 Ajustes del tamaño del título principal según el ancho de la pantalla (responsivo) */
+@media (min-width: 450px) {
+    h1.heading {
+        font-size: 1.75em;
+    }
+}
+
+@media (min-width: 760px) {
+    h1.heading {
+        font-size: 3.25em;
+    }
+}
+
+@media (min-width: 900px) {
+    h1.heading {
+        font-size: 4.25em;
+        margin: 0 0 0.5em;
+    }
+}
+
+/* 🔹 Estilos base del botón (enlace con apariencia de botón) */
+.btnfos {
+    
+    color: #fff;
+    /* Texto blanco */
+    cursor: pointer;
+    /* Muestra el cursor de mano */
+    display: inline-block;
+    /* 🔸 Aquí cada botón ocupa toda la fila */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 45px;
+    /* Altura del texto dentro del botón */
+    max-width: none;
+    margin: 0 auto 2em;
+    /* Centrado y espacio inferior */
+    position: relative;
+    /* Permite posicionar el SVG dentro */
+    text-transform: uppercase;
+    /* Convierte el texto en mayúsculas */
+    vertical-align: middle;
+    width: 100%;
+    
+    
+    /* 🔸 Hace que ocupe todo el ancho de su contenedor */
+
+
+
+}
+
+/* 🔹 Ajustes para pantallas más grandes */
+@media (min-width: 400px) {
+    .btnfos {
+        display: inline-block;
+        /* Los botones se muestran en línea */
+        margin-right: 2.5em;
+        /* Espacio entre botones */
+    }
+
+    .btnfos:nth-of-type(even) {
+        margin-right: 0;
+        /* Elimina margen del botón par */
+    }
+}
+
+@media (min-width: 600px) {
+    .btnfos:nth-of-type(even) {
+        margin-right: 2.5em;
+    }
+
+    .btnfos:nth-of-type(5) {
+        margin-right: 0;
+    }
+}
+
+/* 🔹 Variante de botón tipo 1 */
+.btnfos-1 {
+    background: #738A9A;
+    /* Fondo negro */
+    font-weight: 100;
+    color: #CCDBE2;
+    /* Fuente delgada */
+}
+
+/* 🔹 SVG dentro del botón: cubre todo el botón y permite dibujar el borde */
+.btnfos-1 svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 45px;
+    /* 🔸 Esto hace que el SVG se ajuste a su contenido */
+}
+
+/* 🔹 El rectángulo del SVG crea el borde animado */
+.btnfos-1 rect {
+    fill: none;
+    /* Sin relleno, solo borde */
+    stroke: #CCDBE2;
+    /* Color del borde (blanco) */
+    stroke-width: 1;
+    /* Grosor del borde */
+    stroke-dasharray: 422, 0;
+    /* Define el patrón de línea discontinua (sirve para animar el trazo) */
+
+}
+
+/* 🔹 Estado hover: cuando pasas el mouse sobre el botón */
+.btnfos-1:hover {
+    background: rgba(225, 51, 45, 0);
+    /* Fondo transparente al pasar el mouse */
+    letter-spacing: 1px;
+    /* Espacia un poco las letras */
+    font-weight: 900;
+    /* Hace el texto más grueso */
+}
+
+/* 🔹 Animación del borde SVG cuando se hace hover */
+.btnfos-1:hover rect {
+    stroke-width: 5;
+    /* Borde más grueso */
+    stroke-dasharray: 15, 310;
+    /* Crea efecto de trazo animado */
+    stroke-dashoffset: 48;
+    /* Desfase del trazo (movimiento del borde) */
+    -webkit-transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    /* Transición suave */
+}
+
+.banner {
+
+    display: flex;
+    background: linear-gradient(to left, #CCDBE2, #738A9A, #636D7D);
+    width: 30%;
+    border-radius: 20px;
+    box-shadow: black;
+    border: 1px solid #738A9A;
+    justify-content: center;
+    
+
+
+
+}
+
+.spaciado-banner {
+    width: 9%;
+}
+
+.div-padre-banner {
+    display: flex;
+    gap: 5%;
+    padding: 30px;
+
+}
+
+.i1 {
+
+
+    height: 300px;
+
+}
+
+.div-img-banner {
+    display: flex;
+    justify-content: end;
+
+
+}
+
+.banner-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+    font-family: "Roboto", sans-serif;
+     color:black;
+}
+
+.section-cards-padre {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.soft-skills-list {
+    list-style-type: disc;
+    /* 🔹 Muestra los puntos */
+    padding-left: 20px;
+    /* 🔹 Añade espacio para que se vean */
+    margin-top: 10px;
+}
+
+
+/* ---------------------------------------------------------------------------------*/
+.section-cards {
+    border: 1px solid #738A9A;
+    /* reemplaza #000000 por un color más suave */
+   background-color: #161616;
+    /* agrega fondo moderno */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* agrega sombra suave */
+    padding: 20px;
+    /* agrega espacio interno */
+    width: 80%;
+    border-radius: 20px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    /* evita que la card se salga */
+    height: 350px;
+
+
+}
+
+
+.habilidades-texo {
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+    padding: 2%;
+    color:#CCDBE2 ;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size:15px;
+    
+    
+    transition: width 0.5s ease, opacity 0.5s ease;
+
+
+
+
+}
+
+
+
+.habilidades {
+    padding: 20px; /* aumenta el padding */
+    background: linear-gradient(to bottom, #95acb6, #738A9A); 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* sombra suave */
+    width: 30%;
+    border-radius: 20px;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    background-color: #95acb6;
+    font-family: "Roboto", sans-serif;
+    color: #161616;
+    
+
+
+    transition: transform 0.5s ease, width 0.5s ease;
+
+
+}
+
+.habilidades.mover {
+
+
+    transform: translateX(200px);
+    transform: translateY(-10px) scale(1.05); /* levanta y agranda ligeramente */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3); 
+
+}
+
+.habilidades:hover {
+
+    cursor: pointer;
+
+}
+
+.card-title,
+.card-subtitle {
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    padding: 2%;
+    color: #CCDBE2; /* contraste con la card */
+}
+
+.coraje img{
+    height: 250px;
+}
+
+.coraje {
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 60% ;
+    
+}
+    
+
+.section-cards2{
+    padding: 20px;
+    /* agrega espacio interno */
+    width: 80%;
+    border-radius: 20px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    gap:3% ;
+    /* evita que la card se salga */
+    height: 350px;
+    font-family: "Roboto", sans-serif;
+    
+
+
+}
+.carddos p{
+     padding-top: 11%;
+}
+.carddos{
+    background: linear-gradient(to bottom, #738A9A, #636D7D); 
+     /* aumenta el padding */
+    border: 1px solid #95acb6; 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25); /* sombra suave */
+    width: 25%;
+    border-radius: 10px;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    background-color: #95acb6;
+    align-items: center;
+    text-align: center;
+    color: #CCDBE2; /* texto claro para contraste */
+    animation: fadeInDown 10s ease;
+    font-family: "Roboto", sans-serif;
+    
+
+}
+.carddos:hover {
+    transform: translateY(-10px) scale(1.05); 
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35); /* sombra más intensa */
+    background: linear-gradient(to bottom, #95acb6, #50616d); /* ligero cambio de gradiente */
+}
+
+.mitad-card {
+    
+    height: 100%;
+    border-radius: 10px;
+    text-align: center;
+
+}
