@@ -11,13 +11,14 @@ header {
     justify-content: center;
     padding: 20px;
     height: 100px;
+   
 }
 
 .section-header {
     border: 1px solid #738A9A;
     height: 100;
     width: 80%;
-    border-radius: 20px;
+    border-radius: 50px;
     background-color: #738A9A;
     display: flex;
     box-shadow: black;
@@ -143,7 +144,7 @@ body {
     display: flex;
     background: linear-gradient(to left, #CCDBE2, #738A9A, #636D7D);
     width: 30%;
-    border-radius: 20px;
+    border-radius: 50px;
     box-shadow: black;
     border: 1px solid #738A9A;
     justify-content: center;
@@ -283,7 +284,7 @@ body {
     border: 1px solid #95acb6; 
     box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     width: 25%;
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 3%;
     display: flex;
     flex-direction: column;
@@ -307,7 +308,7 @@ body {
 }
 
 .img-trayectoria {
-    border-radius: 20px;
+    border-radius: 50px;
     width: 82%;
 }
 
@@ -316,18 +317,20 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .div-img-trayectoria {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    
     padding: 30px;
     border-radius: 10px;
     flex-direction: column;
     gap: 10px;
     color: #000000;
+   
 }
 
 .logo-card {
