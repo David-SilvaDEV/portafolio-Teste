@@ -14,7 +14,7 @@
   <header>
     <section class="section-header">
       <div class="logo">
-        
+
       </div>
       <section class="buttons">
         <div class="div-btn">
@@ -22,7 +22,7 @@
             <svg>
               <rect x="0" y="0" fill="none" width="100%" height="100%" rx="10" ry="10" />
             </svg>
-            proyectos
+            <span class="btn-text">Proyectos</span>
           </a>
         </div>
         <div class="div-btn">
@@ -30,8 +30,9 @@
             <svg>
               <rect x="0" y="0" fill="none" width="100%" height="100%" rx="10" ry="10" />
             </svg>
-            Lenguajes y tecnologías
+            <span class="btn-text">Lenguajes y tecnologías</span>
           </a>
+        </div>
       </section>
 
 
@@ -59,10 +60,80 @@
     </div>
   </div>
   <section class="trayectoria-section">
-
     <div class="div-img-trayectoria">
-      <div><h1 class="trayectoria">Trayectoria</h1></div>
-      <img src="./src/img/trayectoria.png" alt="imagen-trayectoria" class="img-trayectoria">
+      <div class="trajectory-animation-container">
+        <img id="trajectory-frame" src="./src/img/trayectoria-frames/33.png" alt="trajectory animation"
+          class="img-trayectoria-animated">
+        <img id="trajectory-letters" src="./src/img/trayectoria-letras/3.png" alt="trajectory letters"
+          class="img-trayectoria-letters">
+        
+        <!-- Puntos interactivos de la trayectoria -->
+        <!-- Punto 1: Círculo inferior izquierdo -->
+        <div class="timeline-point" data-point="1" style="top: 78%; left: 7.90%;">
+          <div class="point-photo">
+            <img src="./src/img/icons/education.svg" alt="Educación" class="timeline-icon">
+          </div>
+          <div class="point-tooltip">
+            <h3>Formación Académica</h3>
+            <p>Inicié mi camino en el desarrollo con una sólida base académica en programación y tecnologías web.</p>
+          </div>
+        </div>
+        
+        <!-- Punto 2: Círculo izquierdo -->
+        <div class="timeline-point" data-point="2" style="top: 57.70%; left: 24.20%;">
+          <div class="point-photo">
+            <img src="./src/img/icons/first-job.svg" alt="Primer trabajo" class="timeline-icon">
+          </div>
+          <div class="point-tooltip">
+            <h3>Primer Proyecto</h3>
+            <p>Mi primera experiencia profesional desarrollando aplicaciones web con HTML, CSS y JavaScript.</p>
+          </div>
+        </div>
+        
+        <!-- Punto 3: Círculo centro-izquierda -->
+        <div class="timeline-point" data-point="3" style="top: 49.90%; left: 40.50%;">
+          <div class="point-photo">
+            <img src="./src/img/icons/frameworks.svg" alt="Frameworks" class="timeline-icon">
+          </div>
+          <div class="point-tooltip">
+            <h3>Especialización</h3>
+            <p>Dominio de frameworks modernos como React, Vue.js y tecnologías backend avanzadas.</p>
+          </div>
+        </div>
+        
+        <!-- Punto 4: Círculo centro-derecha -->
+        <div class="timeline-point" data-point="4" style="top: 44.50%; left: 52.66%;">
+          <div class="point-photo">
+            <img src="./src/img/icons/leadership.svg" alt="Liderazgo" class="timeline-icon">
+          </div>
+          <div class="point-tooltip">
+            <h3>Liderazgo Técnico</h3>
+            <p>Evolución hacia roles de liderazgo, arquitectura de software y mentoring de equipos de desarrollo.</p>
+          </div>
+        </div>
+        
+        <!-- Punto 5: Círculo superior derecha -->
+        <div class="timeline-point" data-point="5" style="top: 40%; left: 63.49%;">
+          <div class="point-photo">
+            <img src="./src/img/icons/innovation.svg" alt="Innovación" class="timeline-icon">
+          </div>
+          <div class="point-tooltip">
+            <h3>Innovación Actual</h3>
+            <p>Desarrollo de soluciones innovadoras, exploración de nuevas tecnologías y liderazgo de proyectos complejos.</p>
+          </div>
+        </div>
+        
+        <!-- Punto 6: Círculo extremo derecha -->
+        <div class="timeline-point" data-point="6" style="top: 35%; left: 84.45%;">
+          <div class="point-photo">
+            <img src="./src/img/icons/future.svg" alt="Futuro" class="timeline-icon">
+          </div>
+          <div class="point-tooltip">
+            <h3>Visión Futura</h3>
+            <p>Continuando la evolución tecnológica, explorando IA, cloud computing y arquitecturas de próxima generación.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section-cards-padre">
@@ -142,8 +213,8 @@
           <li>Aprendizaje continuo</li>
           <li>Liderazgo técnico</li>
         </ul>
-        
-     
+
+
 
 
       </div>

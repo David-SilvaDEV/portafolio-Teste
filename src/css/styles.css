@@ -16,13 +16,15 @@ header {
 
 .section-header {
     border: 1px solid #738A9A;
-    height: 100;
-    width: 80%;
+    height: 100px;
+    width: 85%;
     border-radius: 50px;
     background-color: #738A9A;
     display: flex;
     box-shadow: black;
-    animation: fadeInDown 2s ease; 
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: slideInFromTop 0.8s ease forwards;
 }
 
 /* 🔹 Estilo general del cuerpo de la página */
@@ -33,18 +35,38 @@ body {
 }
 
 .logo {
-    width: 55%;
+    width: 45%;
 }
 
 /* 🔹 Contenedor de los botones: usa flexbox para alinearlos */
 .buttons {
     display: flex;
     text-align: center;
+
     height: 100%;
-    gap: 10px;
-    justify-content: center;
-    align-items: flex-end;
-    padding-top: 10px;
+    gap: 12px;
+    justify-content: end;
+    align-items: end;
+    padding: 10px 10px 5px 20px;
+    flex-wrap: nowrap;
+}
+
+.div-btn {
+    
+    flex: 0 1 auto;
+    min-width: 200px;
+    max-width: 280px;
+
+}
+
+.btn-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
+    line-height: inherit;
+    font-size: inherit;
 }
 
 /* 🔹 Ajustes del tamaño del título principal según el ancho de la pantalla */
@@ -72,7 +94,7 @@ body {
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 45px;
     max-width: none;
@@ -81,6 +103,12 @@ body {
     text-transform: uppercase;
     vertical-align: middle;
     width: 100%;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0 8px;
 }
 
 @media (min-width: 400px) {
@@ -130,6 +158,8 @@ body {
     background: rgba(225, 51, 45, 0);
     letter-spacing: 1px;
     font-weight: 900;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(115, 138, 154, 0.3);
 }
 
 .btnfos-1:hover rect {
@@ -137,6 +167,11 @@ body {
     stroke-dasharray: 15, 310;
     stroke-dashoffset: 48;
     transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btnfos-1:active {
+    transform: translateY(0);
+    transition: transform 0.1s ease;
 }
 
 /* 🔹 Banner */
@@ -148,6 +183,9 @@ body {
     box-shadow: black;
     border: 1px solid #738A9A;
     justify-content: center;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInFromLeft 0.8s ease 0.3s forwards;
 }
 
 .spaciado-banner {
@@ -176,6 +214,9 @@ body {
     width: 40%;
     font-family: "Roboto", sans-serif;
     color:black;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInFromRight 0.8s ease 0.6s forwards;
 }
 
 /* 🔹 Cards principales */
@@ -202,6 +243,9 @@ body {
     position: relative;
     overflow: hidden;
     height: 350px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
 }
 
 .habilidades-texo {
@@ -292,7 +336,9 @@ body {
     align-items: center;
     text-align: center;
     color: #CCDBE2;
-    animation: fadeInDown 10s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.3s ease;
 }
 
 .carddos:hover {
@@ -312,25 +358,283 @@ body {
     width: 82%;
 }
 
+/* Trajectory animation styles */
+.trajectory-animation-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-trayectoria-animated {
+    border-radius: 50px;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.2s ease;
+    object-fit: contain;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.img-trayectoria-letters {
+    border-radius: 50px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 1; /* Visible inicialmente */
+    transition: opacity 0.3s ease;
+}
+
+/* Puntos interactivos de la trayectoria */
+.timeline-point {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.point-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #738A9A, #95acb6);
+    border: 3px solid #CCDBE2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.point-photo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #95acb6, #CCDBE2);
+}
+
+.timeline-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
+}
+
+.point-photo:hover .timeline-icon {
+    transform: scale(1.1);
+    filter: brightness(0) invert(0.2);
+}
+
+/* Tooltips */
+.point-tooltip {
+    position: absolute;
+    background: rgba(22, 22, 22, 0.95);
+    backdrop-filter: blur(10px);
+    color: #CCDBE2;
+    padding: 15px 20px;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 320px;
+    border: 1px solid #738A9A;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 20;
+    font-family: 'Roboto', sans-serif;
+    
+    /* Posición fija arriba del punto */
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    pointer-events: none;
+}
+
+/* Asegurar que tooltips activos tengan mayor z-index */
+.timeline-point.active .point-tooltip {
+    z-index: 30;
+}
+
+/* Tooltips adaptativos para evitar solapamiento */
+.timeline-point[data-point="1"] .point-tooltip {
+    left: -10px;
+    transform: translateY(10px);
+    min-width: 250px;
+    max-width: 270px;
+    bottom: 65px;
+    z-index: 25;
+}
+
+.timeline-point[data-point="2"] .point-tooltip {
+    left: -50px;
+    transform: translateY(10px);
+    min-width: 250px;
+    max-width: 270px;
+    bottom: 65px;
+    z-index: 24;
+}
+
+.timeline-point[data-point="5"] .point-tooltip {
+    right: -30px;
+    left: auto;
+    transform: translateY(10px);
+    min-width: 260px;
+    max-width: 280px;
+}
+
+.timeline-point[data-point="6"] .point-tooltip {
+    right: -20px;
+    left: auto;
+    transform: translateY(10px);
+    min-width: 260px;
+    max-width: 280px;
+}
+
+/* Estados activos con mejor posicionamiento */
+.timeline-point[data-point="1"].active .point-tooltip {
+    transform: translateY(-10px);
+}
+
+.timeline-point[data-point="2"].active .point-tooltip {
+    transform: translateY(-10px);
+}
+
+.timeline-point[data-point="5"].active .point-tooltip {
+    transform: translateY(-10px);
+}
+
+.timeline-point[data-point="6"].active .point-tooltip {
+    transform: translateY(-10px);
+}
+
+.timeline-point.active .point-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px);
+    pointer-events: auto;
+}
+
+.point-tooltip h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #95acb6;
+    border-bottom: 1px solid #738A9A;
+    padding-bottom: 5px;
+}
+
+.point-tooltip p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #CCDBE2;
+}
+
+/* Flecha del tooltip */
+.point-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: rgba(22, 22, 22, 0.95);
+}
+
+/* Animación de pulso para los puntos */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 0 rgba(151, 172, 182, 0.7);
+    }
+    70% {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 10px rgba(151, 172, 182, 0);
+    }
+    100% {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 0 rgba(151, 172, 182, 0);
+    }
+}
+
+/* Reducir tamaño del punto 4 (Liderazgo Técnico) */
+.timeline-point[data-point="4"] .point-photo {
+    width: 42px;  /* Un poco más pequeño que el estándar de 50px */
+    height: 42px;
+}
+
+.timeline-point[data-point="4"] .timeline-icon {
+    width: 20px;  /* Un poco más pequeño que el estándar de 24px */
+    height: 20px;
+}
+
+/* Reducir tamaño del punto 3 (Especialización) */
+.timeline-point[data-point="3"] .point-photo {
+    width: 42px;  /* Un poco más pequeño que el estándar de 50px */
+    height: 42px;
+}
+
+.timeline-point[data-point="3"] .timeline-icon {
+    width: 20px;  /* Un poco más pequeño que el estándar de 24px */
+    height: 20px;
+}
+
+/* Reducir tamaño del punto 5 (Innovación Actual) */
+.timeline-point[data-point="5"] .point-photo {
+    width: 30px;  /* Más pequeño que el anterior de 35px */
+    height: 30px;
+}
+
+.timeline-point[data-point="5"] .timeline-icon {
+    width: 14px;  /* Más pequeño que el anterior de 16px */
+    height: 14px;
+}
+
+/* Reducir tamaño del punto 6 (Visión Futura) */
+.timeline-point[data-point="6"] .point-photo {
+    width: 44px;  /* Un poco más pequeño que el estándar de 50px */
+    height: 44px;
+}
+
+.timeline-point[data-point="6"] .timeline-icon {
+    width: 21px;  /* Un poco más pequeño que el estándar de 24px */
+    height: 21px;
+}
+
+
+.img-trayectoria-animated {
+    border-radius: 50px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    opacity: 1; /* Visible por defecto */
+}
+
 .trayectoria-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    padding: 5px 0 20px 0; /* Menos espacio arriba, mantener abajo */
 }
 
 .div-img-trayectoria {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    padding: 30px;
+    padding: 15px; /* Reducido de 30px a 15px */
     border-radius: 10px;
     flex-direction: column;
     gap: 10px;
     color: #000000;
-   
 }
 
 .logo-card {
@@ -349,6 +653,88 @@ body {
     left: 80%;
 }
 
+/* 🎬 ENTRANCE ANIMATIONS ------------------------------------------------ */
+@keyframes slideInFromTop {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Clases para animaciones escalonadas */
+.animate-in {
+    animation: slideInFromBottom 0.6s ease forwards;
+}
+
+.animate-in-delay-1 {
+    animation: slideInFromBottom 0.6s ease 0.2s forwards;
+}
+
+.animate-in-delay-2 {
+    animation: slideInFromBottom 0.6s ease 0.4s forwards;
+}
+
+.animate-in-delay-3 {
+    animation: slideInFromBottom 0.6s ease 0.6s forwards;
+}
+
+.animate-fade-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInScale 0.8s ease forwards;
+}
+
+/* Pantallas grandes (1200px+) */
+@media (min-width: 1200px) {
+    .section-header {
+        width: 80%;
+        height: 100px;
+    }
+    
+    .div-btn {
+        min-width: 220px;
+        max-width: 300px;
+    }
+    
+    .btnfos {
+        font-size: 15px;
+        padding: 0 10px;
+    }
+    
+    .buttons {
+        gap: 15px;
+        padding: 10px 15px;
+    }
+}
+
 /* 📱 RESPONSIVE DESIGN ---------------------------------------------------- */
 
 /* Tablets */
@@ -363,6 +749,34 @@ body {
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        gap: 12px;
+        padding: 12px;
+    }
+    
+    .div-btn {
+        flex: 0 1 auto;
+        min-width: 200px;
+        max-width: 220px;
+    }
+    
+    .btnfos {
+        width: 100%;
+        font-size: 13px;
+        line-height: 42px;
+        padding: 0 15px;
+        margin: 0;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-text {
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    
+    .btnfos:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.15);
     }
 
     .banner {
@@ -396,6 +810,123 @@ body {
     .coraje {
         width: 80%;
     }
+    
+    /* Habilidades blandas mejoradas para tablets */
+    .section-cards {
+        flex-direction: column;
+        height: auto;
+        padding: 25px;
+        gap: 20px;
+    }
+    
+    .habilidades {
+        width: 100%;
+        order: 1;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
+    }
+    
+    .habilidades:hover {
+        transform: translateY(-5px);
+        cursor: default;
+    }
+    
+    .habilidades-texo {
+        width: 100%;
+        opacity: 1;
+        order: 2;
+        background: linear-gradient(135deg, #2a2a2a, #161616);
+        border-radius: 15px;
+        padding: 20px;
+        border: 1px solid #738A9A;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    
+    .habilidades-texo li {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-left: 3px solid #95acb6;
+        background: rgba(115, 138, 154, 0.1);
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .habilidades-texo li:hover {
+        background: rgba(115, 138, 154, 0.2);
+        transform: translateX(5px);
+    }
+    
+    .coraje {
+        width: 100%;
+        order: 3;
+        margin-top: 20px;
+        justify-content: center;
+    }
+    
+    .coraje img {
+        height: 200px;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    
+    .coraje:hover img {
+        opacity: 1;
+    }
+    
+    /* Timeline points para tablets */
+    .timeline-point {
+        transform: translate(-50%, -50%) scale(0.85);
+    }
+    
+    .point-tooltip {
+        min-width: 260px;
+        max-width: 300px;
+        font-size: 13px;
+        padding: 12px 18px;
+    }
+    
+    .point-tooltip h3 {
+        font-size: 15px;
+    }
+    
+    .point-tooltip p {
+        font-size: 13px;
+    }
+    
+    /* Ajustar tamaños específicos en tablets */
+    .timeline-point[data-point="3"] .point-photo,
+    .timeline-point[data-point="4"] .point-photo {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .timeline-point[data-point="5"] .point-photo {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .timeline-point[data-point="6"] .point-photo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .timeline-point[data-point="3"] .timeline-icon,
+    .timeline-point[data-point="4"] .timeline-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .timeline-point[data-point="5"] .timeline-icon {
+        width: 13px;
+        height: 13px;
+    }
+    
+    .timeline-point[data-point="6"] .timeline-icon {
+        width: 19px;
+        height: 19px;
+    }
 }
 
 /* Celulares */
@@ -419,13 +950,41 @@ body {
 
     .buttons {
         flex-direction: column;
-        gap: 10px;
-        padding-top: 15px;
+        gap: 15px;
+        padding: 15px 10px;
         align-items: center;
+        justify-content: center;
+        width: 100%;
     }
-
+    
+    .div-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
     .btnfos {
-        width: 80%;
+        width: 85%;
+        max-width: 220px;
+        font-size: 13px;
+        line-height: 40px;
+        text-align: center;
+        margin: 0;
+        padding: 0 10px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    
+    .btn-text {
+        font-size: 13px;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    
+    .btnfos:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .div-padre-banner {
@@ -471,19 +1030,335 @@ body {
         align-items: center;
     }
 
-    .habilidades,
-    .coraje,
-    .habilidades-texo {
-        width: 90%;
+    /* Habilidades blandas mejoradas para móviles */
+    .section-cards {
+        flex-direction: column;
+        height: auto;
+        width: 95%;
+        padding: 20px;
+        gap: 15px;
+        background: linear-gradient(135deg, #161616, #2a2a2a);
+        border-radius: 20px;
+        border: 1px solid #738A9A;
     }
-
+    
+    .habilidades {
+        width: 100%;
+        order: 1;
+        padding: 20px;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #738A9A, #95acb6);
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        text-align: center;
+    }
+    
+    .card-title {
+        font-size: 1.3em;
+        margin-bottom: 8px;
+        color: #161616;
+        font-weight: 600;
+    }
+    
+    .card-subtitle {
+        font-size: 0.9em;
+        color: #2a2a2a;
+        margin-bottom: 15px;
+        font-style: italic;
+    }
+    
+    .soft-skills-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .soft-skills-list li {
+        background: rgba(22, 22, 22, 0.3);
+        padding: 8px 6px;
+        border-radius: 8px;
+        font-size: 11px;
+        text-align: center;
+        color: #161616;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(22, 22, 22, 0.2);
+    }
+    
+    .soft-skills-list li:hover {
+        background: rgba(22, 22, 22, 0.5);
+        transform: scale(1.02);
+        color: #CCDBE2;
+    }
+    
     .habilidades-texo {
-        font-size: 14px;
+        width: 100%;
         opacity: 1;
-        width: 90%;
+        order: 2;
+        background: linear-gradient(135deg, #2a2a2a, #161616);
+        border-radius: 15px;
+        padding: 15px;
+        border: 1px solid #738A9A;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        font-size: 13px;
+    }
+    
+    .habilidades-texo li {
+        margin-bottom: 12px;
+        padding: 12px;
+        border-left: 3px solid #95acb6;
+        background: rgba(115, 138, 154, 0.15);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .habilidades-texo li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(204, 219, 226, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .habilidades-texo li:hover {
+        background: rgba(115, 138, 154, 0.25);
+        transform: translateX(8px);
+        border-left-width: 4px;
+    }
+    
+    .habilidades-texo li:hover::before {
+        left: 100%;
+    }
+    
+    .coraje {
+        width: 100%;
+        order: 3;
+        margin-top: 15px;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .coraje img {
+        height: 150px;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+    
+    .coraje:hover img {
+        opacity: 0.9;
+        transform: scale(1.05);
     }
 
     .img-trayectoria {
         width: 90%;
+    }
+    
+    .img-trayectoria-animated {
+        width: 100%;
+    }
+    
+    /* Timeline points responsive */
+    .timeline-point {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+    
+    .point-tooltip {
+        min-width: 220px;
+        max-width: 250px;
+        font-size: 12px;
+        padding: 10px 14px;
+        bottom: 50px;
+    }
+    
+    .point-tooltip h3 {
+        font-size: 14px;
+    }
+    
+    .point-tooltip p {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+}
+
+/* Pantallas medianas (600px - 768px) */
+@media (max-width: 768px) and (min-width: 600px) {
+    .buttons {
+        gap: 10px;
+        padding: 12px;
+        justify-content: center;
+    }
+    
+    .div-btn {
+        min-width: 160px;
+        max-width: 200px;
+    }
+    
+    .btnfos {
+        font-size: 12px;
+        line-height: 38px;
+        padding: 0 10px;
+    }
+    
+    .btn-text {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}
+
+/* Pantallas muy pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+    .timeline-point {
+        transform: translate(-50%, -50%) scale(0.6);
+    }
+    
+    .point-tooltip {
+        min-width: 200px;
+        max-width: 220px;
+        font-size: 11px;
+        padding: 8px 12px;
+        bottom: 45px;
+    }
+    
+    .point-tooltip h3 {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    
+    .point-tooltip p {
+        font-size: 11px;
+        line-height: 1.2;
+    }
+    
+    /* Ajustar tamaños específicos en pantallas muy pequeñas */
+    .timeline-point[data-point="3"] .point-photo,
+    .timeline-point[data-point="4"] .point-photo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .timeline-point[data-point="5"] .point-photo {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .timeline-point[data-point="6"] .point-photo {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .timeline-point[data-point="3"] .timeline-icon,
+    .timeline-point[data-point="4"] .timeline-icon {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .timeline-point[data-point="5"] .timeline-icon {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .timeline-point[data-point="6"] .timeline-icon {
+        width: 15px;
+        height: 15px;
+    }
+    
+    /* Mejorar header en pantallas muy pequeñas */
+    .section-header {
+        width: 98%;
+        padding: 8px;
+    }
+    
+    .div-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+    
+    .btnfos {
+        width: 90%;
+        max-width: 180px;
+        font-size: 12px;
+        line-height: 35px;
+        text-align: center;
+        margin: 0;
+        padding: 0 12px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+    
+    .btnfos:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        letter-spacing: 0.5px;
+    }
+    
+    .buttons {
+        gap: 8px;
+        padding: 10px 5px;
+    }
+    
+    /* Banner muy pequeño */
+    .banner-text {
+        font-size: 0.9rem;
+    }
+    
+    .banner-text h1 {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+    
+    /* Cards muy pequeñas */
+    .carddos {
+        width: 95%;
+        padding: 4%;
+        margin-bottom: 15px;
+    }
+    
+    .carddos p {
+        font-size: 13px;
+        padding-top: 8%;
+    }
+}
+    /* Ajustar tamaños específicos en móvil */
+    .timeline-point[data-point="3"] .point-photo,
+    .timeline-point[data-point="4"] .point-photo {
+        width: 34px;
+        height: 34px;
+    }
+    
+    .timeline-point[data-point="5"] .point-photo {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .timeline-point[data-point="6"] .point-photo {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .timeline-point[data-point="3"] .timeline-icon,
+    .timeline-point[data-point="4"] .timeline-icon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .timeline-point[data-point="5"] .timeline-icon {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .timeline-point[data-point="6"] .timeline-icon {
+        width: 17px;
+        height: 17px;
     }
 }
